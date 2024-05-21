@@ -1,7 +1,4 @@
-
-
-
-
+#more descriptive plots
 #correlations for all features
 matrixe <- cor(df, method="spearman")  # or use method="spearman" if the data is not normally distributed
 
@@ -16,7 +13,7 @@ dev.off()
 #SOme scatter plots
 library(ggplot2)
 
-# Replace `feature_name` with the actual name of the feature you want to plot
+# scatter plot income and house value
 png("median_income.png", width = 1600, height = 1200, res = 150)
 ggplot(df, aes(x = median_income, y = median_house_value)) +
   geom_point(alpha = 0.6) +

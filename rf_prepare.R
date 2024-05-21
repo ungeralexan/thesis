@@ -11,7 +11,7 @@ library(dplyr)
 library(reshape2)
 library(caret)
 #read in the data set from kaggle : https://www.kaggle.com/datasets/camnugent/california-housing-prices 
-#or from my github page
+#or from my github page : https://github.com/ungeralexan/thesis
 house = read.csv("housing.csv")
 
 #first look at the data
@@ -35,42 +35,44 @@ na_counts <- countNAs(house)
 print(na_counts)
 
 
-#omit those missing entries for the total bedrooms variable as the data set is large enough
+#omit those missing entries for the total bedrooms feature as the data set is large enough
 house = na.omit(house)
 
 #check the distribution in the data 
 summary(house)
 #Income reaches form 0.5-15
-#Median house value has some outliers
+#Median house value entails some houses that are very valuable
+# Housing median age has some old properties
 
 
 #######################
-#lets extract the feature visualization later
+#extracting some features for the visualization files later
+#to look at distributions, correlations, etc
 ocean_feature = house$ocean_proximity
 ocean_feature = as.data.frame(ocean_feature) #store it as frame
 drop_for_distributions =  c('ocean_proximity')
 distributions = house[ , !(names(house) %in% drop_for_distributions)]
 distributions = as.data.frame(distributions)
-str(distributions)
+str(distributions) #check that they all are numeric
 #######################
 
 #######
-# One-Hot-Encoding the 'ocean_proximity' variable
+# One-Hot-Encoding the 'ocean_proximity' feature
 house$ocean_proximity <- as.factor(house$ocean_proximity)
 dummies <- dummyVars(~ ocean_proximity, data = house)
 house_encoded <- predict(dummies, newdata = house)
 house_encoded <- as.data.frame(house_encoded)
 
-# Combine the encoded variables with the numerical variables
+# Combine the encoded features with the numerical features
 house <- cbind(house, house_encoded)
 drop_vector <- c('ocean_proximity')
-house <- house[ , !(names(house) %in% drop_vector)]
+house <- house[ , !(names(house) %in% drop_vector)] #drop the old featzre
 ############
 
 
 
 
-#now lets change our variables (to reduce correlations see visualizing)
+#now lets change our features (to reduce correlations see visualizing)
 
 #now lets face new bedroom variables 
 house$mean_population = house$population/house$households # the average population per household
@@ -88,7 +90,7 @@ head(house)
 
 
 
-# Dataframe is the dataset that is gonna be used throughout the analysis
+# The dataframe for the analysis will be called df
 df = house 
 
 

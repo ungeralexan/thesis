@@ -73,7 +73,7 @@ dev.off()
 
 
 ######
-#Test data
+#Evaluation of model performance on test set
 #predictions for test data
 testPred = predict(original_model, data = test)
 
