@@ -32,3 +32,17 @@ library(shapviz) # for the SHAP visualization
 library(ggplot2) # for plotting
 library(corrplot)
 library(leaflet)
+
+## Step 1: Data Preparation
+To start, run the rf_prepare.R script. This script performs the following tasks:
+* Check for Missing Values: Identifies and removes any rows with missing values to ensure the dataset is clean and ready for analysis.
+* One-Hot Encoding: Converts the ocean_proximity categorical feature into numerical format using one-hot encoding. This transformation is essential for the Random Forest model to process categorical data.
+* Feature Engineering: Introduces three new features to enhance the dataset
+
+## Step 2 : Fitt the random forest model
+In order to run the ranger function with the set seed the rf_prepare.R need to be sourced in:
+
+```R
+source("rf_prepare.R")
+
+
