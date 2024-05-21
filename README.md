@@ -32,6 +32,7 @@ library(shapviz) # for the SHAP visualization
 library(ggplot2) # for plotting
 library(corrplot)
 library(leaflet)
+```
 
 ## Step 1: Data Preparation
 To start, run the rf_prepare.R script. This script performs the following tasks:
