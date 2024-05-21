@@ -17,3 +17,18 @@ This document provides detailed information on the structure of the project, the
 
 ### SHAP Analysis
 - **shap_analysis.R**: R script with the SHAP analysis.
+
+## Required Libraries
+The following R libraries need to be installed to run the scripts:
+
+```R
+library(tidyverse)
+library(dplyr)
+library(reshape2)
+library(caret)
+library(treeshap) # to apply the tree SHAP algorithm
+library(ranger) # for the random forest model
+library(shapviz) # for the SHAP visualization
+library(ggplot2) # for plotting
+library(corrplot)
+library(leaflet)
