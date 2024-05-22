@@ -1,7 +1,17 @@
-#more descriptive plots
-#correlations for all features
+##### File 6
+
+# More descriptive plots
+
+#the necessary libraries
+library(corrplot)
+library(ggplot2)
+
+#correlations matrix for all features
+
+# Calculate the Spearman correlation matrix for all features
 matrixe <- cor(df, method="spearman")  # or use method="spearman" if the data is not normally distributed
 
+# Visualize the correlation matrix
 png("all_corr.png", width = 1600, height = 1200, res = 150)
 corrplot(matrixe, method="number", type="lower")
 dev.off()
@@ -10,10 +20,10 @@ dev.off()
 
 
 
-#SOme scatter plots
-library(ggplot2)
+# Scatter plots
 
-# scatter plot income and house value
+
+# Scatter plot: Median Income vs. Median House Value
 png("median_income.png", width = 1600, height = 1200, res = 150)
 ggplot(df, aes(x = median_income, y = median_house_value)) +
   geom_point(alpha = 0.6) +
@@ -22,7 +32,7 @@ ggplot(df, aes(x = median_income, y = median_house_value)) +
 dev.off()
 
 
-#scatter income and house prices
+# Scatter plot: Median Income vs. Mean Rooms
 png("income_rooms.png", width = 1600, height = 1200, res = 150)
 ggplot(df, aes(x = median_income, y = mean_rooms)) +
   geom_point(alpha = 0.6) +
@@ -30,7 +40,7 @@ ggplot(df, aes(x = median_income, y = mean_rooms)) +
   labs(x = "Median_income", y = "Mean Rooms", title = "Scatter Plot of Feature vs. Median House Value")
 dev.off()
 
-#scatter longitude and latitude
+# Scatter plot: Longitude vs. Latitude
 png("long_lat.png", width = 1600, height = 1200, res = 150)
 ggplot(df, aes(x = longitude, y = latitude)) +
   geom_point(alpha = 0.6) +
@@ -39,7 +49,7 @@ ggplot(df, aes(x = longitude, y = latitude)) +
 dev.off()
 
 
-# clustering for median house value prices
+# Scatter plot: Longitude and Latitude colored by Median House Value
 png("long_lat_mhv.png", width = 1600, height = 1200, res = 150)
 ggplot(df, aes(x = longitude, y = latitude, color = median_house_value)) +
   geom_point(alpha = 0.6) +  # Adjust alpha for better visibility if needed
@@ -50,7 +60,7 @@ ggplot(df, aes(x = longitude, y = latitude, color = median_house_value)) +
 dev.off()
 
 
-# clustering for income in several blocks
+# Scatter plot: Longitude and Latitude colored by Median Income
 png("long_lat_income.png", width = 1600, height = 1200, res = 150)
 ggplot(df, aes(x = longitude, y = latitude, color = median_income)) +
   geom_point(alpha = 0.6) +  # Adjust alpha for better visibility if needed
@@ -61,7 +71,7 @@ ggplot(df, aes(x = longitude, y = latitude, color = median_income)) +
 dev.off()
 
 
-# clustering for house age in several blocks
+# Scatter plot: Longitude and Latitude colored by Housing Median Age
 png("long_lat_age.png", width = 1600, height = 1200, res = 150)
 ggplot(df, aes(x = longitude, y = latitude, color = housing_median_age)) +
   geom_point(alpha = 0.6) +  # Adjust alpha for better visibility if needed

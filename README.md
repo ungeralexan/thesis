@@ -13,14 +13,14 @@ This document provides detailed information on the structure of the project, the
 
 ### Analysis Script
 - **model_one.R**: R script for that entails the random forest the SHAP analysis is build on.
-- **refine_model_2.R**: R script for the more nuanced random forest model after the SHAP analysis
+- **refine_model_2.R**: R script for the more nuanced random forest model after the SHAP analysis.
 
 ### Scripts for descriptives and visualizations
 - **visualizing.R**: R script for descriptives like correlations or distributions.
 - **visualize_improve.R**: R script to explore some patterns in the data.
 
 ### SHAP Analysis
-- **shap_analysis.R**: R script with the SHAP analysis, entails all the plots
+- **shap_analysis.R**: R script with the SHAP analysis, entails all the plots.
 
 ## Required Libraries
 The following R libraries need to be installed to run the scripts:
@@ -43,10 +43,10 @@ To start, run the rf_prepare.R script. This script performs the following tasks:
 * Check for Missing Values: Identifies and removes any rows with missing values to ensure the dataset is clean and ready for analysis.
 * One-Hot Encoding: Converts the ocean_proximity categorical feature into numerical format using one-hot encoding. This transformation is essential to later gain more insights about how every category impacted the prediction in the SHAP analysis.
 * Feature Engineering: Introduces three new features to enhance the dataset.
-* It creates subsets of the dataset for the correlation analysis before feature engineering and after
+* It creates subsets of the dataset for the correlation analysis before feature engineering and after.
 
 ## Step 2 : Fitt the random forest model
-The rf_prepare.R can also be sourced in in the model_one.R script. Once the rf_prepare.R script is run all the other scripts can be run
+The rf_prepare.R can also be sourced in in the model_one.R script. Once the rf_prepare.R script is run all the other scripts can be run.
 
 ```R
 source("rf_prepare.R")

@@ -1,5 +1,8 @@
-#refine model 
-#remove the features that have been detected as unimportant
+##### Script 4
+
+#Refining the model after SHAP analysis
+ 
+#removing unimportant features
 features_to_remove <- c("island", "households", "mean_bedrooms","nearBay","nearOcean")  # start with the least important features
 
 # Update the dataset by removing these features
@@ -8,9 +11,9 @@ df_2 <- df[, !(names(df) %in% features_to_remove)]
 # Create new training and testing datasets without the removed features
 train_reduced_2 = df_2[ix, ]
 test_reduced_2 = df_2[-ix, ]
-
+# Set a seed for reproducibility
 set.seed(21000)
-
+#Build the refined model
 model_2 <- ranger(
   formula = median_house_value ~ ., 
   data = train_reduced_2, 
@@ -19,10 +22,11 @@ model_2 <- ranger(
   mtry = 4,
   num.trees = 500
 )
+#Check the performance of the model
 print(model_2)
 
-#
-#performance on unseen data
+
+#Evaluating the refined model on unseen data
 testPred_2 = predict(model_2, data = test_reduced_2)
 
 # Extract the actual and predicted values

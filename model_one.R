@@ -1,7 +1,8 @@
-#random forest model 
+####### File 2
+# Source the preparation script
 source("rf_prepare.R")
 
-#load the packages we need 
+# Load necessary libraries
 #library(kernelshap) 
 library(treeshap) #to apply the tree SHAP algorithm
 library(ranger) #for the random forest model
@@ -23,14 +24,14 @@ ix = sample(nrow(df), 0.7 * nrow(df))
 train = df[ix, ]
 test = df[-ix, ]
 
-#store train and test set as csv to ensure reproducibility
+#store train and test set as csv to ensure reproducibility (is not needed)
 #write.csv(train, "train_data.csv", row.names = FALSE)
 #write.csv(test, "test_data.csv", row.names = FALSE)
 
 # Confirm that the total number of rows matches the original dataset
 print(nrow(train) + nrow(test) == nrow(df))
 
-# Fitting the random forest model
+# Building the random forest model
 original_model <- ranger(
   formula = median_house_value ~ ., 
   data = train, 
@@ -40,20 +41,20 @@ original_model <- ranger(
   num.trees = 500
 )
 
-#check performance (OOB error and so on)
+# Check the performance of the model (Out-Of-Bag error and other metrics)
 print(original_model)
 
 # check feature importance
 importance_ranger = original_model$variable.importance
 
-# look at the values
+# Look at the importance values
 print(importance_ranger)
 
 
 
 
-####to get a more nuanced view lets plot the feature importance
-# Create a data set for the plot
+# Plotting feature importance
+# Create a data frame for the plot
 importance_df <- data.frame(Feature = names(importance_ranger), Importance = importance_ranger)
 
 # Plotting 
@@ -66,7 +67,7 @@ ggplot(importance_df, aes(x = reorder(Feature, Importance), y = Importance)) +
        y = "Importance") +
   theme_minimal()
 dev.off()
-#median income clearly the most important feature
+# From the plot, it is evident that median_income is the most important feature.
 
 
 
@@ -81,10 +82,10 @@ testPred = predict(original_model, data = test)
 actuals <- test$median_house_value
 predictions <- testPred$predictions
 
-# calculate MSE
+# calculate the mean squared error (MSE)
 mse_rf = mean((predictions - actuals)^2)
 
-# calculate rmse
+# Output the RMSE value
 test_rmse = sqrt(mse_rf)
 test_rmse
 
