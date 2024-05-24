@@ -9,9 +9,9 @@ unified_model = ranger.unify(original_model,train[-14])
 # Compute SHAP values
 #use package treeshap: https://cran.r-project.org/web/packages/treeshap/index.html
 # Important if interactions are set true the calculation might take a while,
-#leaving interactions = FALSE will still reproduce waterfall and importance plots
+#leaving interactions = FALSE will still reproduce waterfall and importance plots, only dependence plots differ
 shaps <- treeshap(unified_model,  train[-14] , interactions = TRUE) 
-shp = shapviz(shaps, X=train) # for visualization better then the default plots https://cran.r-project.org/web/packages/shapviz/index.html
+shp = shapviz(shaps, X=train) # for visualization better than the default plots https://cran.r-project.org/web/packages/shapviz/index.html
 
 
 ############### Global interpretation
@@ -105,6 +105,7 @@ png("dependnece_incomereal.png", width = 1600, height = 1200, res = 150)
 plot_interaction(shaps, "median_income", "inland")
 dev.off()
 
+
 png("dependnece_roomreal.png", width = 1600, height = 1200, res = 150)
 plot_interaction(shaps, "mean_rooms", "inland")
 dev.off()
@@ -117,7 +118,7 @@ dev.off()
 #Local interpretation
 #Waterfall plots for specific observations
 
-# for observation three
+# for observation 7
 png("waterfallt.png", width = 1600, height = 1200, res = 150)
 sv_waterfall(shp,row_id = 7)
 dev.off()
@@ -139,6 +140,7 @@ dev.off()
 #The force plot is another useful visualization tool,
 #but I haven't used it in this analysis as I believe the waterfall plots provide clearer insights.
 sv_force(shp,row_id = 3)
+
 
 
 

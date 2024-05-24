@@ -2,14 +2,16 @@
 # Source the preparation script
 source("rf_prepare.R")
 
+# Creates the first random forest model
+# The SHAP analysis is based on this model
+
+
 # Load necessary libraries
-#library(kernelshap) 
 library(treeshap) #to apply the tree SHAP algorithm
 library(ranger) #for the random forest model
 library(shapviz) #for the shap visualisation
 library(dplyr) #to do some data engineering
 library(ggplot2) # for plotting
-#library(pdp) # to visualize partial dependence plots
 
 
 

@@ -81,3 +81,12 @@ ggplot(df, aes(x = longitude, y = latitude, color = housing_median_age)) +
   theme(legend.position = "right")  # Adjust legend position as needed
 dev.off()
 
+# Scatter plot: Longitude and Latitude colored by inland or noninland
+png("long_lat_inland.png", width = 1600, height = 1200, res = 150)
+ggplot(df, aes(x = longitude, y = latitude, color = inland)) +
+  geom_point(alpha = 0.6) +  # Adjust alpha for better visibility if needed
+  scale_color_gradient(low = "blue", high = "red", name = "Inland") +  # Color gradient from blue to red
+  theme_minimal() +
+  labs(x = "Longitude", y = "Latitude", title = "Scatter Plot of inland Across Geographic Coordinates") +
+  theme(legend.position = "right")  # Adjust legend position as needed
+dev.off()
