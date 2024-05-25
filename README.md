@@ -52,3 +52,19 @@ The rf_prepare.R can also be sourced in in the model_one.R script. Once the rf_p
 source("rf_prepare.R")
 ```
 
+## Important note
+The performance of the `ranger` function may exhibit minor variations across different devices. These variations can lead to similar, yet not identical, results. This behavior underscores observations made by the ranger authors and reflects inherent differences in computing environments.
+For detailed discussions related to this issue, please refer to [this GitHub issue](https://github.com/imbs-hl/ranger/issues/533).
+
+**Repository Development Environment:**
+- **Created on**: MacBook Air, macOS Version 12.7.4, R Version 4.3.1 (2023-06-16).
+- **Tested on Windows 11**: Using the same R version (4.3.1, released on 2023-06-16), the results differed slightly. This variation supports the assertions made by the ranger authors about potential differences in function performance across platforms.
+
+
+
+
+
+
+
+
+
