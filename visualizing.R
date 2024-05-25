@@ -66,7 +66,7 @@ dev.off()
 ## Initial correlation analysis
 # Calculate the Spearman correlation matrix
 cor_one_variables = distributions
-cor_matrix <- cor(cor_one_variables, method="spearman")  # or use method="spearman" if the data is not normally distributed
+cor_matrix <- cor(cor_one_variables, method="spearman")  
 
 #Load the necessary packages
 library(corrplot) 
@@ -79,7 +79,7 @@ dev.off()
 # Check the correlations among the accommodation variables
 corr_accom <- cor_one_variables[, !names(cor_one_variables) %in% c("longitude", "latitude", "housing_median_age", "median_income", "median_house_value")]
 
-cor_matrix_sec <- cor(corr_accom, method="spearman")  # or use method="spearman" if the data is not normally distributed
+cor_matrix_sec <- cor(corr_accom, method="spearman")  
 
 # Visualize the correlation matrix for accommodation variables
 png("corr_accom.png", width = 1600, height = 1200, res = 150)
@@ -91,13 +91,13 @@ dev.off()
 
 # Prepare the dataset with numerical features only
 drops_3 = c('nearBay', 'lessoneOcean', 'inland', 'nearOcean','island')
-house_num =  df[ , !(names(df) %in% drops_3)] #updates housing_num to include only the columns not listed in drops_1. This leaves you with a dataset of purely numerical features without the target variable.
+house_num =  df[ , !(names(df) %in% drops_3)] #updates housing_num to include only the columns not listed in drops_1. This leaves you with a dataset of purely numerical features.
 
 
 
 # Calculate the Spearman correlation matrix for new features
 cor_newvar = house_num
-cor_matrix <- cor(cor_newvar, method="spearman")  # or use method="spearman" if the data is not normally distributed
+cor_matrix <- cor(cor_newvar, method="spearman")  
 
 
 # Visualize the correlation matrix for ne features
