@@ -100,19 +100,6 @@ dev.off()
  
 
 
-#Original plots provided by the treeshap package
-png("dependnece_incomereal.png", width = 1600, height = 1200, res = 150)
-plot_interaction(shaps, "median_income", "inland")
-dev.off()
-
-
-png("dependnece_roomreal.png", width = 1600, height = 1200, res = 150)
-plot_interaction(shaps, "mean_rooms", "inland")
-dev.off()
-
-png("dependnece_longreal.png", width = 1600, height = 1200, res = 150)
-plot_interaction(shaps, "longitude", "inland")
-dev.off()
 
 
 #Local interpretation
