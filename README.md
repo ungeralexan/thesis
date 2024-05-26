@@ -1,4 +1,4 @@
-# Thesis: Shapley and SHAP Values to Explain Models for Regression
+# Thesis: Shapley and SHAP Values for Feature Importance in House Price Predictions
 
 ## Overview
 This document provides detailed information on the structure of the project, the purpose of each file, and the sequence in which the scripts should be executed. It is designed to help you understand how the project is organized and how to reproduce the results.
