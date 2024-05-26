@@ -12,7 +12,7 @@ This document provides detailed information on the structure of the project, the
 - **rf_prepare.R**: R script for data preparation, feature engineering, etc.
 
 ### Analysis Script
-- **model_one.R**: R script for that entails the random forest the SHAP analysis is build on.
+- **model_one.R**: R script that entails the random forest the SHAP analysis is build on.
 - **refine_model_2.R**: R script for the more nuanced random forest model after the SHAP analysis.
 
 ### Scripts for descriptives and visualizations
@@ -32,7 +32,7 @@ library(reshape2)
 library(caret)
 library(treeshap) # to apply the tree SHAP algorithm
 library(ranger) # for the random forest model
-library(shapviz) # for nice SHAP visualization
+library(shapviz) # for nice SHAP visualizations
 library(ggplot2) 
 library(corrplot)
 library(leaflet)
@@ -51,6 +51,11 @@ The rf_prepare.R can also be sourced in in the model_one.R script. Once the rf_p
 ```R
 source("rf_prepare.R")
 ```
+## Step 3 : Run the other scripts
+After having executed the rf_prepare.R script, run the model_one.R script to perform the random forest analysis. This script will also evaluate the performance of the model. Proceed with the shap_analysis.R script to perform SHAP analysis. This reveals the most significant features influencing the model. Important Note: If interactions are set to TRUE, the computation of SHAP values may take longer due to the increased complexity. When interactions are set to FALSE, the resulting dependence plots will differ significantly. Use the refine_model_2.R script to develop a second random forest model. This iteration uses a reduced set of features based on insights gained from the SHAP analysis. Visualization scripts can be executed at any stage to generate plots for descriptive statistics and correlation analysis. 
+
+
+
 
 ## Important note
 The performance of the `ranger` function may exhibit minor variations across different devices. These variations can lead to similar, yet not identical, results. This behavior underscores observations made by the ranger authors and reflects inherent differences in computing environments.
