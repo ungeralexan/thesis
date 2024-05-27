@@ -52,7 +52,7 @@ The rf_prepare.R can also be sourced in in the model_one.R script. Once the rf_p
 source("rf_prepare.R")
 ```
 ## Step 3 : Run the other scripts
-After having executed the rf_prepare.R script, run the model_one.R script to perform the random forest analysis. This script will also evaluate the performance of the model. Proceed with the shap_analysis.R script to perform SHAP analysis. This reveals the most significant features influencing the model. Important Note: If interactions are set to TRUE, the computation of SHAP values may take longer due to the increased complexity. When interactions are set to FALSE, the resulting dependence plots will differ significantly. Use the refine_model_2.R script to develop a second random forest model. This iteration uses a reduced set of features based on insights gained from the SHAP analysis. Visualization scripts can be executed at any stage to generate plots for descriptive statistics and correlation analysis. 
+After having executed the rf_prepare.R script, run the model_one.R script to perform the random forest analysis. This script will also evaluate the performance of the model. Proceed with the shap_analysis.R script to perform SHAP analysis. This reveals the most significant features influencing the model. Use the refine_model_2.R script to develop a second random forest model. This iteration uses a reduced set of features based on insights gained from the SHAP analysis. Visualization scripts can be executed at any stage to generate plots for descriptive statistics and correlation analysis. 
 
 
 

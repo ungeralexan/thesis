@@ -8,9 +8,7 @@ unified_model = ranger.unify(original_model,train[-14])
 
 # Compute SHAP values
 #use package treeshap: https://cran.r-project.org/web/packages/treeshap/index.html
-# Important if interactions are set true the calculation might take a while,
-#leaving interactions = FALSE will still reproduce waterfall and importance plots, only dependence plots differ
-shaps <- treeshap(unified_model,  train[-14] , interactions = TRUE) 
+shaps <- treeshap(unified_model,  train[-14] , interactions = FALSE) 
 shp = shapviz(shaps, X=train) # for visualization better than the default plots https://cran.r-project.org/web/packages/shapviz/index.html
 
 
@@ -44,34 +42,32 @@ dev.off()
 
 #Using auto will automatically select the feature it determines has the highest dependency.
 png("dependnece_pop.png", width = 1600, height = 1200, res = 150)
-sv_dependence(shp, v = "mean_population", color_var = "auto", interactions = TRUE)
+sv_dependence(shp, v = "mean_population", color_var = "auto", interactions = FALSE)
 dev.off()
 
 png("dependnece_pop.png", width = 1600, height = 1200, res = 150)
-sv_dependence(shp, v = "mean_population", color_var = "median_income", interactions = TRUE)
+sv_dependence(shp, v = "mean_population", color_var = "median_income", interactions = FALSE)
 dev.off()
 
 png("dependnece_pop.png", width = 1600, height = 1200, res = 150)
-sv_dependence(shp, v = "mean_population", color_var = "mean_rooms", interactions = TRUE)
+sv_dependence(shp, v = "mean_population", color_var = "mean_rooms", interactions = FALSE)
 dev.off()
 
 
 # Dependence plot for mean_rooms
 png("dependnece_rooms.png", width = 1600, height = 1200, res = 150)
-sv_dependence(shp, v = "mean_rooms", color_var = "auto", interactions = TRUE)
+sv_dependence(shp, v = "mean_rooms", color_var = "auto", interactions = FALSE)
 dev.off()
-#There may be a slight trend indicating that, for a steady level of rooms, higher income yields higher SHAP values.
 
 
 png("dependnece_rooms.png", width = 1600, height = 1200, res = 150)
-sv_dependence(shp, v = "mean_rooms", color_var = "inland", interactions = TRUE)
+sv_dependence(shp, v = "mean_rooms", color_var = "inland", interactions = FALSE)
 dev.off()
 #clear interactions with the binary inland feature
 
 png("dependnece_rooms.png", width = 1600, height = 1200, res = 150)
-sv_dependence(shp, v = "mean_rooms", color_var = "mean_population", interactions = TRUE)
+sv_dependence(shp, v = "mean_rooms", color_var = "mean_population", interactions = FALSE)
 dev.off()
-#clear interactions with the binary inland feature
 
 
 
@@ -79,22 +75,22 @@ dev.off()
 
 # Dependence plots for median income feature
 png("dependnece_income.png", width = 1600, height = 1200, res = 150)
-sv_dependence(shp, v = "median_income", color_var = "auto", interactions = TRUE)
+sv_dependence(shp, v = "median_income", color_var = "auto", interactions = FALSE)
 dev.off()
 
 png("dependnece_income.png", width = 1600, height = 1200, res = 150)
-sv_dependence(shp, v = "median_income", color_var = "inland", interactions = TRUE)
+sv_dependence(shp, v = "median_income", color_var = "inland", interactions = FALSE)
 dev.off()
 
 png("dependnece_income.png", width = 1600, height = 1200, res = 150)
-sv_dependence(shp, v = "median_income", color_var = "mean_population", interactions = TRUE)
+sv_dependence(shp, v = "median_income", color_var = "mean_population", interactions = FALSE)
 dev.off()
 
 
 
 # Dependence plots for inland just for testing
 png("dependnece_inland.png", width = 1600, height = 1200, res = 150)
-sv_dependence(shp, v = "inland", color_var = "auto", interactions = TRUE)
+sv_dependence(shp, v = "inland", color_var = "auto", interactions = FALSE)
 dev.off()
 
  
